@@ -77,3 +77,10 @@ create_tables.py - This script will drop old tables (if exist) ad re-create new 
 etl.py - This script executes the queries that extract JSON data from the S3 bucket and ingest them to Redshift
 sql_queries.py - This file contains variables with SQL statement in String formats, partitioned by CREATE, DROP, COPY and INSERT statements
 dhw.cfg - Configuration file used that contains info about Redshift, IAM and
+
+#### References
+
+ SQL Constraints - https://www.studytonight.com/dbms/sql-constraints.php
+
+
+
