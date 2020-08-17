@@ -20,7 +20,7 @@ time_table_drop = 'DROP TABLE IF EXISTS time'
 
 staging_events_table_create = \
     """CREATE TABLE staging_events(
-    event_id INT IDENTITY(0,1),
+    event_id INTEGER PRIMARY KEY IDENTITY(0,1),
     artist_name VARCHAR,
     auth VARCHAR,
     user_first_name VARCHAR,
@@ -38,13 +38,12 @@ staging_events_table_create = \
     status INTEGER,
     ts VARCHAR,
     userAgent TEXT,
-    userId VARCHAR,
-    PRIMARY KEY (event_id))
+    userId VARCHAR)
 """
 
 staging_songs_table_create = \
     """CREATE TABLE staging_songs(
-    song_id VARCHAR,
+    song_id VARCHAR PRIMARY KEY,
     num_songs INTEGER,
     artist_id VARCHAR,
     artist_latitude DOUBLE PRECISION,
@@ -53,13 +52,12 @@ staging_songs_table_create = \
     artist_name VARCHAR,
     title VARCHAR,
     duration DOUBLE PRECISION,
-    year INTEGER,
-    PRIMARY KEY (song_id))
+    year INTEGER)
 """
 
 songplay_table_create = \
     """CREATE TABLE songplays(
-    songplay_id INT IDENTITY(0,1),
+    songplay_id INTEGER PRIMARY KEY IDENTITY(0,1),
     start_time TIMESTAMP REFERENCES time(start_time),
     userId VARCHAR REFERENCES users(userId),
     level VARCHAR,
@@ -67,50 +65,45 @@ songplay_table_create = \
     artist_id VARCHAR REFERENCES artists(artist_id),
     sessionId  BIGINT,
     location VARCHAR,
-    userAgent TEXT,
-    PRIMARY KEY (songplay_id))
+    userAgent TEXT)
 """
 
 user_table_create = \
     """CREATE TABLE users(
-    userId VARCHAR,
+    userId VARCHAR PRIMARY KEY,
     first_name VARCHAR,
     last_name VARCHAR,
     gender VARCHAR,
-    level VARCHAR,
-    PRIMARY KEY (userId))
+    level VARCHAR)
 """
 
 song_table_create = \
     """CREATE TABLE songs(
-    song_id VARCHAR,
+    song_id VARCHAR PRIMARY KEY,
     title VARCHAR,
     artist_id VARCHAR NOT NULL,
     year INTEGER,
-    duration DOUBLE PRECISION,
-    PRIMARY KEY (song_id))
+    duration DOUBLE PRECISION)
 """
 
 artist_table_create = \
     """CREATE TABLE artists(
-    artist_id VARCHAR,
+    artist_id VARCHAR PRIMARY KEY,
     name VARCHAR,
     location VARCHAR,
     latitude DOUBLE PRECISION,
-    longitude DOUBLE PRECISION,
-    PRIMARY KEY (artist_id))
+    longitude DOUBLE PRECISION)
 """
 
 time_table_create = \
     """CREATE TABLE time(
-    start_time TIMESTAMP,
+    start_time TIMESTAMP PRIMARY KEY,
     hour INTEGER,
     day INTEGER,
     week INTEGER,
     month INTEGER,
     year INTEGER,
-    weekday INTEGER,
-    PRIMARY KEY (start_time))
+    weekday INTEGER)
 """
 
 # STAGING TABLES
